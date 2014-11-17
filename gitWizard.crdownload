@@ -1,0 +1,139 @@
+// ==UserScript==
+// @name         Git Wizard Level
+// @namespace    http://maxwellv.com/
+// @version      0.1
+// @description  gives you a wizard avatar for how much you commit
+// @author       Max Volz
+// @match        https://*/*
+// @grant        none
+// @require       http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js
+// ==/UserScript==
+
+var imgs = $("img.avatar");
+
+var prefix = "";
+var elementType = "";
+var suffix = "";
+var wizardTitle = "";
+
+var contributes = $(".contrib-column > span.contrib-number").html().split(' ')[0];
+var streak = $(".contrib-column:eq(1) > span.contrib-number").html().split(' ')[0];
+var followers = $("a.vcard-stat > strong").html();
+
+
+
+
+function determineWizardLevel()
+{
+    //Formatting for name is <Wizard level> <Wizard Type> <if streaking>
+    //Example: Contributes - 30,  Streak - 5, Followers - 10
+    //Basic Spark Wizard on Fire
+    /*
+     	Contributes Levels:
+            0-5 Noob
+            6-20 Basic
+            21-50 Magic
+            51-99 Super
+            100-249 Ultimate
+            400+ Insane
+        
+        Follower Levels:
+        	0 Spark
+            1-3 Fire
+            4-10 Lightning
+            11-20 Dark
+            21-50 Death
+            51-99 Molten
+            100-200 Ice
+            201+ Robotic
+            
+        Streak Levels:
+        	0 that's rusting
+            1 ""
+            2 heating up
+            3-5 thats on fire!
+            6-10 on a killing spree!
+            11-20 approaching world domination.
+            21-30 ascending to planar form.
+            31-50 the Legend.
+            51+ needs to take a day off.
+    */
+    
+    
+    //set prefix Contributes
+    contributes = parseInt(contributes);
+    
+    
+    if ( contributes < 20 ) {
+        	prefix = "Noob";
+            
+        }
+        else if ( contributes >= 20 && contributes < 69 ) {
+            prefix = "Adept";
+        }
+        else if ( contributes >= 69 && contributes < 149 ) {
+            prefix = "Basic";
+        }
+        else if ( contributes >= 149 && contributes < 250 ) {
+            prefix = "Super";
+        }
+        else if ( contributes >= 356 && contributes < 450) {
+            prefix = "Ultimate";
+        }
+        else {
+            prefix = "Insane";
+        }
+    
+    if ( followers < 3 ) {
+        	elementType = "spark";
+            
+        }
+        else if ( followers >= 3 && followers < 7 ) {
+            elementType = "fire";
+        }
+        else if ( followers >= 8 && followers < 15 ) {
+            elementType = "lightning";
+        }
+        else if ( followers >= 16 && followers < 25 ) {
+            elementType = "dark";
+        }
+        else if ( followers >= 25 && followers < 50) {
+            elementType = "death";
+        }
+        else {
+            elementType = "insane";
+        }
+    
+    if ( streak < 20 ) {
+        	suffix = "that is idle.";
+            
+        }
+        else if ( streak >= 20 && streak < 69 ) {
+            suffix = "heating up!";
+        }
+        else if ( streak >= 69 && streak < 249 ) {
+            suffix = "on fire!";
+        }
+        else if ( streak >= 249 && streak < 400 ) {
+            suffix = "on a killing spree!";
+        }
+        else if ( streak >= 400 ) {
+            suffix = "the Legend.";
+        }
+        else {
+            suffix = "ascending to planar form.";
+        }
+    
+    
+    //contributions title
+}
+
+function showAlert()
+{
+    $("span.vcard-username").html(prefix + " " + elementType + " wizard " + suffix);
+    //console.log();
+   
+}
+determineWizardLevel();
+showAlert();
+
