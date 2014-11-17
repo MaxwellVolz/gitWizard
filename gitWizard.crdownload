@@ -5,6 +5,10 @@
 // @description  gives you a wizard avatar for how much you commit
 // @author       Max Volz
 // @match        https://*/*
+// @include     http://www.github.com/*
+// @include     http://www.github.com/*/*
+// @include     http://www.github.com/*/*/*
+// @include     http://www.github.com/*/*/*/*
 // @grant        none
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js
 // ==/UserScript==
