@@ -20,8 +20,8 @@ var elementType = "";
 var suffix = "";
 var wizardTitle = "";
 
-var contributes = $(".contrib-column > span.contrib-number").html().split(' ')[0].replace(',','';
-var streak = $(".contrib-column:eq(1) > span.contrib-number").html().split(' ')[0];
+var contributes = $(".contrib-column > span.contrib-number").html().split(' ')[0].replace(',','');
+var streak = $(".contrib-column:eq(1) > span.contrib-number").html().split(' ')[0].replace(',','');
 var followers = $("a.vcard-stat > strong").html();
 
 
@@ -140,4 +140,3 @@ function showAlert()
 }
 determineWizardLevel();
 showAlert();
-
