@@ -20,7 +20,7 @@ var elementType = "";
 var suffix = "";
 var wizardTitle = "";
 
-var contributes = $(".contrib-column > span.contrib-number").html().split(' ')[0];
+var contributes = $(".contrib-column > span.contrib-number").html().split(' ')[0].replace(',','';
 var streak = $(".contrib-column:eq(1) > span.contrib-number").html().split(' ')[0];
 var followers = $("a.vcard-stat > strong").html();
 
@@ -84,7 +84,7 @@ function determineWizardLevel()
         else if ( contributes >= 356 && contributes < 450) {
             prefix = "Ultimate";
         }
-        else {
+        else if( contributes >= 450){
             prefix = "Insane";
         }
     
@@ -104,25 +104,25 @@ function determineWizardLevel()
         else if ( followers >= 25 && followers < 50) {
             elementType = "death";
         }
-        else {
-            elementType = "insane";
+        else if( followers >= 50){
+            elementType = "spectral";
         }
     
-    if ( streak < 20 ) {
+    if ( streak < 2 ) {
         	suffix = "that is idle.";
             
         }
-        else if ( streak >= 20 && streak < 69 ) {
+        else if ( streak == 2) {
             suffix = "heating up!";
         }
-        else if ( streak >= 69 && streak < 249 ) {
+        else if ( streak >= 3 && streak < 6 ) {
             suffix = "on fire!";
         }
-        else if ( streak >= 249 && streak < 400 ) {
+        else if ( streak >= 7 && streak < 25 ) {
             suffix = "on a killing spree!";
         }
-        else if ( streak >= 400 ) {
-            suffix = "the Legend.";
+        else if ( streak >= 25 ) {
+            suffix = "crushing it super hard.";
         }
         else {
             suffix = "ascending to planar form.";
